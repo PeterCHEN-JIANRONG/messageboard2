@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>      
+    </head>
+    <body>
+        <div id="mydiv1">留言板</div>
+        <form action="/" method="get" onsubmit="return leaveMsg()" name="myform1">
+            Author:<br>
+            <input type="text" name="author" value=""><br>
+            Email:<br>
+            <input type="text" name="email" value=""><br>
+            Content:<br>
+            <input type="text" name="content" value="" style="width:200px"><br>
+            <br>
+            <input type="submit" value="submit">
+        </form>
+        <!-- <button onclick="myFunction()">Click me</button>     -->
+        <div id="mydiv2"></div>
+        <pre id="mypre1"></pre>
+      <script>
+        function leaveMsg() {
+                var d1 = myform1.author.value;
+                var d2 = myform1.email.value;
+                var d3 = myform1.content.value;
+                var d4 = getDateTime();
+                $.ajax({
+                    url:'/sendmessage',
+                    type:'post',
+                    data:{
+                        author:d1,
+                        email:d2,
+                        content:d3,
+                        time:d4
+                    },
+                    success:function(result){
+                        appendPre(result)
+                        // appendPre2("Author : "+result.author)
+                        // appendPre2("Email : "+result.email)
+                        // appendPre2("Time : "+result.time)
+                        // appendPre2("Content : "+result.content)
+                        // appendPre2("")
+                    }
+                })
+                return false;
+        }
+        
+        function getDateTime() {
+            var date = new Date();
+            var hour = date.getHours();
+            hour = (hour < 10 ? "0" : "") + hour;
+            var min  = date.getMinutes();
+            min = (min < 10 ? "0" : "") + min;
+            var sec  = date.getSeconds();
+            sec = (sec < 10 ? "0" : "") + sec;
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            month = (month < 10 ? "0" : "") + month;
+            var day  = date.getDate();
+            day = (day < 10 ? "0" : "") + day;
+            return year + "/" + month + "/" + day + " ," + hour + ":" + min + ":" + sec;
+        }
+        function appendPre(message) {
+            var ele = document.createElement("p");
+            var pre = document.getElementById('mydiv2');
+            ele.innerText = "Author : " + message.author
+                            + "\nEmail : " + message.email
+                            + "\nTime : " + message.time
+                            + "\nContent : " + message.content;
+            // ele.innerHTML+="<div style=\"border: 1px solid black\"></div>"
+            ele.style="border: 1px solid black";            
+            pre.appendChild(ele);
+        }
+        function appendPre2(message) {
+            var pre = document.getElementById('mypre1');
+            var textContent = document.createTextNode(message + '\n');
+            pre.appendChild(textContent);
+        } 
+
+      </script>
+    </body>
+  </html>
