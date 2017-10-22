@@ -17,7 +17,7 @@
         </form>
         <!-- <button onclick="myFunction()">Click me</button>     -->
         <div id="mydiv2"></div>
-        <pre id="mypre1"></pre>
+        <!-- <pre id="mypre1"></pre> -->
       <script>
         function leaveMsg() {
                 var d1 = myform1.author.value;
@@ -71,12 +71,11 @@
             ele.style="border: 1px solid black";            
             pre.appendChild(ele);
         }
-        function appendPre2(message) {
-            var pre = document.getElementById('mypre1');
-            var textContent = document.createTextNode(message + '\n');
-            pre.appendChild(textContent);
-        } 
-
+        // function appendPre2(message) {
+        //     var pre = document.getElementById('mypre1');
+        //     var textContent = document.createTextNode(message + '\n');
+        //     pre.appendChild(textContent);
+        // } 
       </script>
     </body>
   </html>
