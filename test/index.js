@@ -25,6 +25,7 @@ describe('check leave a message information',function(){
             assert.isFalse(indextest.checkName("a"))
             assert.isFalse(indextest.checkName("ab"))
             assert(indextest.checkName("abc"))
+            assert(indextest.checkName("abc123"))
         })
     })
 })

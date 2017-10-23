@@ -7,7 +7,7 @@ function checkEmail(msg){
     return emailRule.test(msg)
 }
 function checkName(msg){
-    NameRule = /[A-Za-z]{3,}/;
+    NameRule = /[A-Za-z0-9]{3,}/;
     return NameRule.test(msg)
 }
 
