@@ -5,10 +5,10 @@ var app = express();
 app.set('view engine','ejs');
 app.use(body.urlencoded({extended:true}));
 
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// });
 app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-app.get('/messageboard', function (req, res) {
     res.render('messageboard');
 });
 app.post("/sendmessage", function(req, res, next){
