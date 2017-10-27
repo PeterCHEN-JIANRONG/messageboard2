@@ -17,7 +17,7 @@ app.post("/sendmessage", function(req, res, next){
     res.send(temp);
     // res.end();
 });
-
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080! fuuuuuuuu');
+var port = process.env.PORT || 8080;
+app.listen(port, function () {
+  console.log('Example app listening on '+ port +'! fuuuuuuuu');
 });
