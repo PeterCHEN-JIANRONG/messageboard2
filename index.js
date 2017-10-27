@@ -19,5 +19,5 @@ app.post("/sendmessage", function(req, res, next){
 });
 var PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
-  console.log('Example app listening on '+ port +'! fuuuuuuuu');
+  console.log('Example app listening on '+ PORT +'! fuuuuuuuu');
 });
